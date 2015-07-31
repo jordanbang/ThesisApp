@@ -33,9 +33,9 @@ public class MainActivity extends Activity {
     private Button sendMessage;
     private Context context;
     private String regid;
-    private AtomicInteger msgId = new AtomicInteger();
+    public static AtomicInteger msgId = new AtomicInteger();
 
-    private String SENDER_ID = "20131275316";
+    public static final String SENDER_ID = "20131275316";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,7 +231,7 @@ public class MainActivity extends Activity {
                 try {
                     Bundle data = new Bundle();
                     data.putString("my_message", "Hello World");
-                    data.putString("my_action", "com.jordanbangia.thesisapp.ECHO_NOW");
+                    data.putString("action", "com.grokkingandroid.sampleapp.samples.gcm.RESPONSE");
                     String id = Integer.toString(msgId.incrementAndGet());
                     googleCloudMessaging.send(SENDER_ID + "@gcm.googleapis.com", id, data);
                 } catch (IOException e) {
